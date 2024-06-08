@@ -3,13 +3,22 @@
 <head>
   <title>Gallery</title>
   <style>
-    .gallery { display: flex; flex-wrap: wrap; }
-    .image { margin: 10px; }
-    .image img { max-width: 300px; max-height: 300px; }
+  .gallery { 
+      display: grid; 
+      grid-template-columns: repeat(9, 1fr); 
+      grid-gap: 10px; 
+    }
+    .image { 
+      margin: 5px; 
+    }
+    .image img { 
+      width: 100%; 
+      height: auto; 
+    }
   </style>
 </head>
 <body>
-  <h2>Gallery</h2>
+  <h2>갤러리</h2>
   <a href="/logout">Logout</a>
   <div class="gallery">
     <% images.forEach(image => { %>
