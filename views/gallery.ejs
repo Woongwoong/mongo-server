@@ -3,9 +3,15 @@
 <head>
   <title>Gallery</title>
   <style>
-  .gallery { 
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .gallery { 
       display: grid; 
-      grid-template-columns: repeat(9, 1fr); 
+      grid-template-columns: repeat(3, 1fr); 
       grid-gap: 10px; 
     }
     .image { 
@@ -18,17 +24,24 @@
   </style>
 </head>
 <body>
-  <h2>갤러리</h2>
-  <a href="/logout">Logout</a>
+  <div class="header">
+    <div><%= User.username %>님 안녕하세요.</div>
+    <a href="/logout">Logout</a>
+  </div>
+  
+  <h2>전이설 갤러리</h2>
+  
   <div class="gallery">
     <% images.forEach(image => { %>
       <div class="image">
         <img src="<%= image.url %>" alt="<%= image.title %>">
+        <p>Title: <%= image.title %></p> 
         <p>Uploaded by: <%= image.uploadedBy %></p>
-        <a href="/delete/<%= image._id %>">Delete</a>
+        <a href="/delete/<%= image._id %>">사진 삭제</a>
       </div>
     <% }); %>
   </div>
+  
   <div class="pagination">
     <% if (page > 1) { %>
       <a href="/gallery?page=<%= page - 1 %>">Previous</a>
@@ -37,6 +50,7 @@
       <a href="/gallery?page=<%= page + 1 %>">Next</a>
     <% } %>
   </div>
+  
   <form method="POST" action="/upload" enctype="multipart/form-data">
     <h3>Upload New Image</h3>
     <label for="image">Image File:</label>
