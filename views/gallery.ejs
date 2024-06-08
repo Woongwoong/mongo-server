@@ -5,8 +5,8 @@
   <style>
     .header {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: flex-end;
+      padding: 10px; /* 헤더에 약간의 패딩 추가 */
       margin-bottom: 20px;
     }
     .gallery { 
@@ -24,12 +24,12 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <a href="/logout">Logout</a>
-  </div>
   
   <h2>전이설 갤러리</h2>
   
+  <div class="header">
+    <a href="/logout">Logout</a>
+  </div>
   <div class="gallery">
     <% images.forEach(image => { %>
       <div class="image">
